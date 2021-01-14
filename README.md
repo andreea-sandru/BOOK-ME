@@ -1,7 +1,7 @@
 # BOOK-ME
 
 
-***Team:***
+**Team**:
 
 **Developer**: Razvan-Gabriel Iancu
 **Developer**: Nicoleta-Manuela Paraschiv
@@ -9,20 +9,27 @@
 **Project Manager**: Andreea-Daniela Sandru
 
 ***Technologies used:***
-- Firebase
-  - Firebase Storage
-  - Firebase Realtime Database
+
+1. Firebase:
+
+  - Media Storage: Firebase Storage
+  
+  - NoSQL Database: Firebase Realtime Database
+  
+2. Android Studio
  
- Chosen theme: **Books**
  
+ **Chosen theme:** **Books**
  
- Basic Functionalities:
+ **Basic Functionalities**:
  
- - login + register: 2 account types: admin si client
+ - login + register: 
+ 
+    - 2 account types: admin and client
  
  - manage All Books option:
  
-    - ADD BOOK: object id, object name, object author/description, state: available, year, category
+    - ADD BOOK:id, name, author, state (available), year, category
     
     - UPDATE BOOK
     
@@ -30,9 +37,11 @@
   
   - main page:
   
-    Available Books                      |                Reserved Books
+    **Available Books**                      |                **Reserved Books**
    
-   => search by option                              => reserved by me => make available again => reappears in "Available page" => store userId
+   - search by *option*                                     - reserved by me books
+   
+                                                            - make available again => reappears in "Available page" => store userId
    
    
    => click on book in the list => redirect to book page
