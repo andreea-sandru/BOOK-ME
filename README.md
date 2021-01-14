@@ -3,20 +3,23 @@
 
 **Team**:
 
-**Developer**: Razvan-Gabriel Iancu
-**Developer**: Nicoleta-Manuela Paraschiv
-**Tester**: Bianca-Andreea Gheldiu
-**Project Manager**: Andreea-Daniela Sandru
+- **Developer**: Razvan-Gabriel Iancu
 
-***Technologies used:***
+- **Developer**: Nicoleta-Manuela Paraschiv
 
-1. Firebase:
+- **Tester**: Bianca-Andreea Gheldiu
+
+- **Project Manager**: Andreea-Daniela Sandru
+
+**Technologies used:**
+
+1. ***Firebase***:
 
   - Media Storage: Firebase Storage
   
   - NoSQL Database: Firebase Realtime Database
   
-2. Android Studio
+2. ***Android Studio***
  
  
  **Chosen theme:** **Books**
@@ -40,7 +43,6 @@
     **Available Books**                      |                **Reserved Books**
    
    - search by *option*                                     - reserved by me books
-   
                                                             - make available again => reappears in "Available page" => store userId
    
    
