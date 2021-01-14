@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp"
+    android:fillViewport="true"
+    tools:context=".AddBook">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Add book info here"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito" />
+
+        <ImageView
+            android:id="@+id/ShowImageView"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/textview"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:id="@+id/ButtonChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/coloured_button"
+            android:text="Choose Image"
+            android:layout_below="@+id/ShowImageView"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:fontFamily="@font/nunito_extrabold"
+            android:textAllCaps="false" />
+
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_below="@+id/ButtonChooseImage"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="Enter Book Name Here" />
+
+        <EditText
+            android:id="@+id/authorEditText"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameEditText"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="Enter Author Here" />
+        <EditText
+            android:id="@+id/editCategoryInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_below="@+id/authorEditText"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="Enter Category here" />
+
+        <EditText
+            android:id="@+id/editYearInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_below="@+id/editCategoryInfo"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="Enter Year here" />
+
+        <Button
+            android:id="@+id/ButtonUploadBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/coloured_button"
+            android:text="Upload Book"
+            android:layout_below="@+id/editYearInfo"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:fontFamily="@font/nunito_extrabold"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    tools:context=".ManageBooks">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="Manage Books"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allBooksRecyclerview"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addBookButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="10dp"
+            app:backgroundTint="#8E95AD"
+            android:alpha="0.9"
+            android:src="@drawable/ic_plus"
+            android:contentDescription="Add book">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

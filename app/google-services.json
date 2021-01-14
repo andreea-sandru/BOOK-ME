@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648052048589",
+    "project_id": "bookme-31c53",
+    "storage_bucket": "bookme-31c53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648052048589:android:15032ed20e01323dc3df84",
+        "android_client_info": {
+          "package_name": "com.example.bookme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648052048589-kt2387a1hd9bi5a5535n8ojgv3fa0vk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0ZjkoSB7Lcb9N7_wio9J1f5lz-89Z1Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648052048589-kt2387a1hd9bi5a5535n8ojgv3fa0vk1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

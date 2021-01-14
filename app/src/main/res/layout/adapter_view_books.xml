@@ -1,0 +1,127 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:id="@+id/idd"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idCardViewBook"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="15dp"
+        app:contentPaddingLeft="2dp"
+        app:cardCornerRadius="15dp">
+        <ImageView
+            android:id="@+id/bookImg"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:alpha="0.90"
+            android:layout_gravity="bottom|right"
+            android:src="@color/colorPrimary"
+            android:scaleType="centerCrop" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/bookName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Irish Cafe"
+                        android:text="Harry Potter 1"
+                        android:textColor="#444A60"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/nunito" />
+                    <TextView
+                        android:id="@+id/bookAuthor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Irish Cafe"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#8E95AD"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="J. K. Rowling"
+                        app:fontFamily="@font/nunito"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nunito"
+                            android:textColor="#8E95AD"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:text="Category:"
+                            tools:ignore="VectorDrawableCompat" />
+                        <TextView
+                            android:id="@+id/bookCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Irish Cafe"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito"
+                            android:text="fantasy"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#8E95AD"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito"
+                            android:text="Year:"
+                            tools:ignore="VectorDrawableCompat" />
+                        <TextView
+                            android:id="@+id/bookYear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2005"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+
