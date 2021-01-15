@@ -45,14 +45,14 @@
    
   - if you want to access some data in Firebase you also need a reference and a listener
   
-   which can be a one time listener (when you want to acces the data only once)
+     which can be a one time listener (when you want to acces the data only once)
    
-   or a continuous listener (that listens for changes in the database and updates the existing data)
+     or a continuous listener (that listens for changes in the database and updates the existing data)
    
    - single time listener:
    
-   DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("available_books").child(book_id);
-   ref.addListenerForSingleValueEvent(new ValueEventListener() {
+     DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("available_books").child(book_id);
+     ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                BookObject book = dataSnapshot.getValue(BookObject.class); // aici am accesat cartea cu id-ul book_id
@@ -65,8 +65,7 @@
        ref.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject book = dataSnapshot.getValue(BookObject.class);
-                // aici am accesat iar cartea, dar daca datele din Firebase se schimba, se vor schimba si aici
+                // am accesat iar cartea, dar daca datele din Firebase se schimba, se vor schimba si aici
                 
-            } ... });
+      });
                                     
-      
