@@ -10,6 +10,8 @@ public class BookObject {
     private String bookAuthor;
     private String imageUri;
     private boolean available;
+    // cand modificam starea "available", trebuie sa modificam si reservedUserId
+    private String reservedUserId; //id-ul userului care rezerva cartea
 
     public BookObject() {
 
@@ -24,6 +26,22 @@ public class BookObject {
         this.bookCategory = bookCategory;
         this.imageUri = imageUri;
         this.available = true;
+        this.reservedUserId = "";
+    }
+
+    public String getStatus() {
+        if (isAvailable() == true) {
+            return "available";
+        }
+        return "not available";
+    }
+
+    public String getReservedUserId() {
+        return reservedUserId;
+    }
+
+    public void setReservedUserId(String reservedUserId) {
+        this.reservedUserId = reservedUserId;
     }
 
     public boolean isAvailable() {

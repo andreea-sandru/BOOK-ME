@@ -66,7 +66,7 @@ public class AddBook extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(AddBook.this);
 
-        // Click listener for Choose image button
+        // Click listener pentru choose image button
         ButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class AddBook extends AppCompatActivity {
         });
 
 
-        // Click listener for Upload Donation button
+        // Click listener pentru upload button
         ButtonUploadBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +113,6 @@ public class AddBook extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         /* poza s-a uploadat => stop progressbar */
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
                         // uri-ul imaginii din storage
                         Uri downloadUri = task.getResult();
@@ -131,6 +130,8 @@ public class AddBook extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
+                                            // afisare mesaj succes
+                                            Toast.makeText(getApplicationContext(), "Book Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                             // daca s-a adaugat cartea cu succes => redirectare catre HomePage
                                             startActivity(new Intent(AddBook.this, HomePage.class));
                                         }

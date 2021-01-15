@@ -1,5 +1,6 @@
 package com.example.bookme.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.example.bookme.Adapters.BooksViewHolder;
+import com.example.bookme.BookPage;
 import com.example.bookme.ObjectModels.BookObject;
 import com.example.bookme.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -68,11 +70,11 @@ public class AvailableFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         String book_id = getRef(position).getKey();
-                        // TO DO: de creat un activity BookPage caruia ii trimitem id-ul cartii
-                        // si avand id-ul putem lua din db info carte
-                        //Intent book_page = new Intent(getActivity(), BookPage.class);
-                        //book_page.putExtra("book_id", book_id);
-                        //startActivity(book_page);
+                        // trimitem la pagina cartii, id-ul cartii pe care am dat click
+                        // pentru a putea extrage info despre carte din baza de date
+                        Intent book_page = new Intent(getActivity(), BookPage.class);
+                        book_page.putExtra("book_id", book_id);
+                        startActivity(book_page);
                     }
                 });
             }
