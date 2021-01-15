@@ -8,21 +8,21 @@
 
 **- HomePage:** 
                  
-   - *Reserved Page*: this already has info in the database ("reserved_books") which contains all books that are reserved, along with the reservedUserId
+- **Reserved Page**: this already has info in the database ("reserved_books") which contains all reserved books, along with the reservedUserId
    
-          - next: show only the books that the current user has reserved
+   - next: show only the books that the current user has reserved with a **RecyclerView**
            
-           (or, easier: add to the userObject a list of reservedBooks: when he reserves a book: add it to the list -> then show this list in the RecyclerView in Reserved Page)
+    (or, easier: add to the userObject a list of reservedBooks: when he reserves a book: add it to the list -> then show this list in the RecyclerView in Reserved Page)
 
-   - *Available Page*: this has already all info; next: add filter option  
+- **Available Page**: this has already all info; next: add filter option  
    
           
-  **- Manage Books:** 
+**- Manage Books:** 
   
-    - this has only the *ADD BOOK* option
+  - this has only the **ADD BOOK** option
     
-    - next: 
+  - next: 
     
-        - show all reserved books with a **RecyclerView**  ("reserved_books" in the db)
+      - show all reserved books with a **RecyclerView**  ("reserved_books" in the db)
          
-        - show all available books with another **RecyclerView** ("available_books" in the db)
+      - show all available books with another **RecyclerView** ("available_books" in the db)
