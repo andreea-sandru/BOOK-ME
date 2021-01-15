@@ -52,20 +52,24 @@
    - single time listener:
    
      DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("available_books").child(book_id);
+     
      ref.addListenerForSingleValueEvent(new ValueEventListener() {
-         @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               BookObject book = dataSnapshot.getValue(BookObject.class); // aici am accesat cartea cu id-ul book_id
+        
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        
+        BookObject book = dataSnapshot.getValue(BookObject.class); 
         });
         
         
   - continuous listener:
   
-       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("available_books").child(book_id);
-       ref.addValueEventListener(new ValueEventListener() {
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                BookObject book = dataSnapshot.getValue(BookObject.class);
-                // am accesat iar cartea, dar daca datele din Firebase se schimba, se vor schimba si aici
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("available_books").child(book_id);
+       
+    ref.addValueEventListener(new ValueEventListener() {
+       
+       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+             BookObject book = dataSnapshot.getValue(BookObject.class);
+             // book va fi mereu actualizat cu ultimele modificari din database
                 
       });
                                     
