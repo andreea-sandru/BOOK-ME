@@ -12,38 +12,43 @@
 
 ## Technologies used:
 
-**1. Firebase:**
+**1. Firebase**:
 
   - Media Storage: Firebase Storage
   
   - NoSQL Database: Firebase Realtime Database
-  
+
 **2. Android Studio**
  
  
 ## Chosen theme: **Book Rent App**
 
+ **Chosen theme:** **Books**
 
-## Basic Functionalities:
-  
+
+ **Basic Functionalities**:
+ 
  - login + register: 
  
-    - 2 account types: Admin and Client
+    - 2 account types: admin and client
  
- - manage Books:
+ - manage All Books option:
  
-    - ADD BOOK: id, name, author, state (available), year, category
-    
+    - ADD BOOK:id, name, author, state (available), year, category
+
     - UPDATE BOOK
     
     - DELETE  BOOK
   
   - main page:
-  
+
     - Available Books: search by multiple options  
     
     - Reserved Books: make available again -> reappears in "Available page"
    
-- click on book in the list -> redirect to book page
-   
+
 - click "Book me" button -> book appears in Reserved page
+
+   => click on book in the list => redirect to book page
+   
+   => book photo, state, all info, "Book me" button => appears in Reserved books
