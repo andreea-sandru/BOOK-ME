@@ -39,7 +39,7 @@ import java.util.HashMap;
 public class BookPage extends AppCompatActivity  {
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, dbRef;
     public String estimatedTime = "";
     ImageView mImage;
     private TextView mName, mAuthor, mYear, mStatus, mCategory, reservedUsername, reservedEstimated;
@@ -103,18 +103,23 @@ public class BookPage extends AppCompatActivity  {
         bookMeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                    raisePopUp();
-
-                    if(estimatedTime != "") {
-
-
+                // verificam daca este availble si daca da => o putem rezerva
+                dbRef = FirebaseDatabase.getInstance().getReference().child("all_books").child(book_id);
+                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        BookObject book = dataSnapshot.getValue(BookObject.class);
+                        if(book.isAvailable()) {
+                            raisePopUp();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-
+                });
             }
         });
-
     }
 
     public void raisePopUp() {
@@ -163,20 +168,18 @@ public class BookPage extends AppCompatActivity  {
                                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                                     Date date = new Date();
                                     String dateString = dateFormat.format(date).toString();
-
                                     updated_book.setReservedDate(dateString);
 
-                                    // updatare infi carte in baza de date
+                                    // updatare info carte in baza de date
                                     DatabaseReference ref_new  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
                                     ref_new.setValue(updated_book).addOnCompleteListener(
                                             new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
+                                                        dialogBuilder.dismiss();
                                                         // afisare mesaj succes: cartea este acum in lista de reserved_books
                                                         Toast.makeText(getApplicationContext(), "Book Reserved Successfully ", Toast.LENGTH_LONG).show();
-                                                        //Intent home_page = new Intent(getApplicationContext(), HomePage.class);
-                                                        //startActivity(home_page);
                                                     }
                                                 }
                                             }
@@ -187,6 +190,7 @@ public class BookPage extends AppCompatActivity  {
 
                                 }
                             });
+
                         }
                         else {
                             dialogBuilder.dismiss();
@@ -199,7 +203,6 @@ public class BookPage extends AppCompatActivity  {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
 

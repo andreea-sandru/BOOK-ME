@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.example.bookme.Adapters.BooksViewHolder;
@@ -31,6 +33,9 @@ public class AvailableFragment extends Fragment {
     private FirebaseRecyclerOptions<BookObject> options;
     private FirebaseRecyclerAdapter< BookObject, BooksViewHolder> adapter;
 
+    Button actionCat, fantasyCat, biographyCat, romanceCat, allCat; // allCat = all categories, to reset filters
+    private String filterCategory = "";
+
     public AvailableFragment() {
 
     }
@@ -51,7 +56,63 @@ public class AvailableFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        Query firebaseSearchQuery = databaseReference.orderByChild("available").equalTo(true);
+        // initializare componente design din XML-ul fragment_available
+        actionCat = (Button) view.findViewById(R.id.actionButton2);
+        fantasyCat = (Button) view.findViewById(R.id.fantasyButton2);
+        biographyCat = (Button) view.findViewById(R.id.biographyButton2);
+        romanceCat = (Button) view.findViewById(R.id.romanceButton2);
+        allCat = (Button) view.findViewById(R.id.allButton2);
+
+        // query-ul initial afiseaza tot ce incepe cu "", adica tot
+        Query firebaseSearchQuery = databaseReference.orderByChild("bookCategory").startAt(filterCategory);
+
+        // daca apasam pe un buton de filtrare => actualizam query-ul si adapterul de recyclerview
+        actionCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterCategory = "action";
+                options = updateOptions(filterCategory);
+                adapter.updateOptions(options);
+            }
+        });
+
+        romanceCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterCategory = "romance";
+                options = updateOptions(filterCategory);
+                adapter.updateOptions(options);
+            }
+        });
+
+        fantasyCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterCategory = "fantasy";
+                options = updateOptions(filterCategory);
+                adapter.updateOptions(options);
+            }
+        });
+
+        biographyCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterCategory = "biography";
+                options = updateOptions(filterCategory);
+                adapter.updateOptions(options);
+            }
+        });
+
+
+        allCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterCategory = "";
+                options = updateOptions(filterCategory);
+                adapter.updateOptions(options);
+            }
+        });
+
         options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(firebaseSearchQuery, BookObject.class).build();
         adapter = new FirebaseRecyclerAdapter < BookObject, BooksViewHolder > (options) {
 
@@ -88,5 +149,17 @@ public class AvailableFragment extends Fragment {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    // actualizare optiuni recyclerview pt a folosi noul filtru pentru categorii
+    FirebaseRecyclerOptions<BookObject> updateOptions(String filterCategory) {
+        FirebaseRecyclerOptions<BookObject> options;
+        Query searchQuery = databaseReference.orderByChild("bookCategory").equalTo(filterCategory);
+        if(filterCategory == "") {
+            searchQuery = databaseReference.orderByChild("bookCategory").startAt(filterCategory);
+        }
+
+        options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(searchQuery, BookObject.class).build();
+        return options;
     }
 }
