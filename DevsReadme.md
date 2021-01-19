@@ -1,16 +1,16 @@
 
 # What we have until now:
 
-- universal account type: everyone can access the Manage Books Button in HomePage
+**universal account type: everyone can access the Manage Books Button in HomePage
 
   - we can change this later quickly but for now it's easier for testing
   
 
-**- HomePage:** 
+**HomePage:** 
    
 - **All Books Page**
 
-- **Reserved Page** 
+- **Reserved (by me) Page** 
 
 - **Available Books Page**
 
@@ -18,19 +18,26 @@
 
 - next: all pages need filtering by categories + by name
 
-**- BookPage:**
+
+**BookPage:**
 
 - this has almost everything except Notifications functionality
 
           
-**- Manage Books:** 
+**Manage Books Page:** 
   
   - this has only the **ADD BOOK** option
     
   - next: search books by name and implement **DELETE BOOK** functionality
   
   
-    
+ What have changed:
+ 
+ - now we have a single list called "all_books"
+ 
+ - and to extract specific books we use filtering
+ 
+ 
       
 # Useful info about Firebase:
       
