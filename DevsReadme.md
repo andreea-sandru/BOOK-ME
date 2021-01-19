@@ -1,34 +1,43 @@
 
 # What we have until now:
 
-- universal account type: everyone can access the Manage Books Button in HomePage
+**Universal account type**
 
   - we can change this later quickly but for now it's easier for testing
   
 
-**- HomePage:** 
-                 
-- **Reserved Page**: this already has info in the database ("reserved_books") which contains all reserved books, along with reservedUserId
+**HomePage:** 
    
-   - next: show only the books that the current user has reserved with a **RecyclerView**
-           
-    (or, easier: add to the userObject a list of reservedBooks: when he reserves a book: also add it to his own list 
-    
-    -> then show this list (path: users.userId.myReservedBooks) in Reserved Page; this way we don't need any filtering)
+- **All Books Page**
 
-- **Available Page**: this has already all info; next: add filter option  
-   
+- **Reserved (by me) Page** 
+
+- **Available Books Page**
+
+- **Saved Books Page**: not implemented yet
+
+- next: all pages need filtering by categories + by name
+
+
+**BookPage:**
+
+- this has almost everything except Notifications functionality
+
           
-**- Manage Books:** 
+**Manage Books Page:** 
   
   - this has only the **ADD BOOK** option
     
-  - next: 
-    
-      - show all reserved books with a **RecyclerView**  ("reserved_books" in the db)
-         
-      - show all available books with another **RecyclerView** ("available_books" in the db)
-      
+  - next: search books by name and implement **DELETE BOOK** functionality
+  
+  
+ What have changed:
+ 
+ - now we have a single list called "all_books"
+ 
+ - and to extract specific books we use filtering
+ 
+ 
       
       
 # Useful info about Firebase:
