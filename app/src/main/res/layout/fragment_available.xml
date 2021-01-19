@@ -23,12 +23,12 @@
         android:id="@+id/linearSettings"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/titleAvBooks"
         android:layout_marginLeft="10dp"
+        android:layout_below="@+id/titleAvBooks"
         android:orientation="horizontal">
         <Button
-            android:layout_width="68dp"
+            android:id="@+id/actionButton2"
+            android:layout_width="64dp"
             android:layout_height="32dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
@@ -42,9 +42,10 @@
             android:fontFamily="@font/nunito_extrabold"></Button>
 
         <Button
-            android:layout_width="68dp"
+            android:id="@+id/fantasyButton2"
+            android:layout_width="70dp"
             android:layout_height="32dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="1dp"
             android:layout_gravity="center"
             android:background="@drawable/gray_settings_button"
@@ -57,13 +58,14 @@
         </Button>
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/romanceButton2"
+            android:layout_width="72dp"
             android:layout_height="32dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="1dp"
             android:layout_gravity="center"
             android:background="@drawable/gray_settings_button"
-            android:text="adventure"
+            android:text="romance"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -72,9 +74,10 @@
         </Button>
 
         <Button
+            android:id="@+id/biographyButton2"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="1dp"
             android:layout_gravity="center"
             android:background="@drawable/gray_settings_button"
@@ -85,6 +88,22 @@
             android:fontFamily="@font/nunito_extrabold"
             android:textAllCaps="false">
         </Button>
+
+        <Button
+            android:id="@+id/allButton2"
+            android:layout_width="45dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:background="@drawable/gray_settings_button"
+            android:text="all"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito_extrabold"
+            android:textAllCaps="false">
+        </Button>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
