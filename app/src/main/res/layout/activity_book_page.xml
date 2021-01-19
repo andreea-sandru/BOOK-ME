@@ -136,7 +136,6 @@
                             android:textSize="15sp" />
 
                         <TextView
-                            android:id="@+id/mapInfo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
@@ -162,6 +161,70 @@
                             android:text="2005"
                             android:textSize="15sp" />
 
+                        <LinearLayout
+                            android:id="@+id/bookInfo1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="left|center"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Booked by"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:fontFamily="@font/nunito_extrabold" />
+
+                            <TextView
+                                android:id="@+id/reservedUsername"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="left|center"
+                                android:textColor="@color/colorAccent"
+                                android:text="Macy Kate"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:fontFamily="@font/nunito_extrabold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/bookInfo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="left|center"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Estimated return date"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:fontFamily="@font/nunito_extrabold" />
+
+                            <TextView
+                                android:id="@+id/reservedEstimated"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="left|center"
+                                android:textColor="@color/colorAccent"
+                                android:text="5 FEB"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:fontFamily="@font/nunito_extrabold" />
+                        </LinearLayout>
+
+
                         <Button
                             android:id="@+id/bookButton"
                             android:layout_width="match_parent"
@@ -177,6 +240,7 @@
                             android:fontFamily="@font/nunito"
                             android:background="@drawable/coloured_button"
                             ></Button>
+
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.example.bookme.ObjectModels;
 
+import java.util.ArrayList;
+
 public class BookObject {
 
     private String userId; // id-ul userului care a rezervat cartea
@@ -10,6 +12,11 @@ public class BookObject {
     private String bookAuthor;
     private String imageUri;
     private boolean available;
+    private String reservedDate;
+    private String estimatedTime;
+    private String reservedUsername;
+    private ArrayList notifyUserIds; //id-urile userilor de notificat cand cartea e din nou available
+
     // cand modificam starea "available", trebuie sa modificam si reservedUserId
     private String reservedUserId; //id-ul userului care rezerva cartea
 
@@ -27,6 +34,10 @@ public class BookObject {
         this.imageUri = imageUri;
         this.available = true;
         this.reservedUserId = "";
+        this.reservedDate = "";
+        this.estimatedTime = "";
+        this.reservedUsername = "";
+        this.notifyUserIds = new ArrayList();
     }
 
     public String getStatus() {
@@ -106,5 +117,37 @@ public class BookObject {
 
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
+    }
+
+    public String getReservedDate() {
+        return reservedDate;
+    }
+
+    public void setReservedDate(String reservedDate) {
+        this.reservedDate = reservedDate;
+    }
+
+    public String getEstimatedTime() {
+        return estimatedTime;
+    }
+
+    public void setEstimatedTime(String estimatedBookTime) {
+        this.estimatedTime = estimatedBookTime;
+    }
+
+    public String getReservedUsername() {
+        return reservedUsername;
+    }
+
+    public void setReservedUsername(String reservedUsername) {
+        this.reservedUsername = reservedUsername;
+    }
+
+    public ArrayList getNotifyUserIds() {
+        return notifyUserIds;
+    }
+
+    public void setNotifyUserIds(ArrayList notifyUserIds) {
+        this.notifyUserIds = notifyUserIds;
     }
 }

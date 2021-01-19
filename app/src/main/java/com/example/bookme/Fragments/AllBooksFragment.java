@@ -21,17 +21,15 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
-public class AvailableFragment extends Fragment {
+public class AllBooksFragment extends Fragment {
 
-    private FirebaseAuth mFirebaseAuth;
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
     private FirebaseRecyclerOptions<BookObject> options;
     private FirebaseRecyclerAdapter< BookObject, BooksViewHolder> adapter;
 
-    public AvailableFragment() {
+    public AllBooksFragment() {
 
     }
 
@@ -43,16 +41,14 @@ public class AvailableFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_available, container, false);
+        final View view = inflater.inflate(R.layout.fragment_all_books, container, false);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        recyclerView = (RecyclerView) view.findViewById(R.id.availableRecyclerview);
+        recyclerView = (RecyclerView) view.findViewById(R.id.allBooksRecyclerview);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("all_books");
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        Query firebaseSearchQuery = databaseReference.orderByChild("available").equalTo(true);
-        options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(firebaseSearchQuery, BookObject.class).build();
+        options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(databaseReference, BookObject.class).build();
         adapter = new FirebaseRecyclerAdapter < BookObject, BooksViewHolder > (options) {
 
             @Override

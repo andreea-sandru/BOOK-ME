@@ -1,5 +1,6 @@
 package com.example.bookme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,13 +12,22 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.bookme.Fragments.AllBooksFragment;
 import com.example.bookme.Fragments.AvailableFragment;
 import com.example.bookme.Fragments.ReservedFragment;
+import com.example.bookme.Fragments.SavedBooksFragment;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,62 +55,43 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        // la intoarcerea dintr-un BookPage, stergem cartea care a fost rezervata din "available_books"
-        if(getIntent().hasExtra("book_delete_id")) {
-            String delete_book_id = getIntent().getExtras().get("book_delete_id").toString();
-            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
-            dbRef.child("available_books").child(delete_book_id).setValue(null);
-        }
-
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F5F5F5")));
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        viewPager.setAdapter(new PageAdapter( getSupportFragmentManager()));
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                tabLayout.setupWithViewPager(viewPager);
-            }
-        });
+        //if statement to keep the selected fragment when rotating the device
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fr_container,
+                    new AllBooksFragment()).commit();
+        }
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
-    class PageAdapter extends FragmentPagerAdapter {
 
-        public PageAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new AvailableFragment();
-                case 1:
-                    return new ReservedFragment();
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return int_items;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-
-            switch (position) {
-                case 0:
-                    String recent_news = "Available";
-                    return recent_news;
-                case 1:
-                    String category = "Reserved";
-                    return category;
-            }
-            return null;
-        }
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.availableBooks:
+                            selectedFragment = new AvailableFragment();
+                            break;
+                        case R.id.allBooks:
+                            selectedFragment = new AllBooksFragment();
+                            break;
+                        case R.id.savedBooks:
+                            selectedFragment = new SavedBooksFragment();
+                            break;
+                        case R.id.reservedBooks:
+                            selectedFragment = new ReservedFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fr_container,
+                            selectedFragment).commit();
+                    return true;
+                }
+            };
 }

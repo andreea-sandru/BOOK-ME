@@ -125,7 +125,7 @@ public class AddBook extends AppCompatActivity {
                         // creare carte si apoi adaugare in baza de date
                         BookObject book = new BookObject(key, userId, imageUri, bookName, bookAuthor, bookCategory, bookYear);
 
-                        dbref.child("available_books").child(key).setValue(book).addOnCompleteListener(
+                        dbref.child("all_books").child(key).setValue(book).addOnCompleteListener(
                                 new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

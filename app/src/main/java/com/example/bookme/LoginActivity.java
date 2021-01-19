@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailID.getText().toString(); // "macy@email.com";
+                String email = emailID.getText().toString(); // "macy@email.com"
                 String pwd = password.getText().toString(); // "parola";
                 if (email.isEmpty()) {
                     emailID.setError("Please enter email");
