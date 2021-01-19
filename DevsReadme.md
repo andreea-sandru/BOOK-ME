@@ -7,29 +7,30 @@
   
 
 **- HomePage:** 
-                 
-- **Reserved Page**: this already has info in the database ("reserved_books") which contains all reserved books, along with reservedUserId
    
-   - next: show only the books that the current user has reserved with a **RecyclerView**
-           
-    (or, easier: add to the userObject a list of reservedBooks: when he reserves a book: also add it to his own list 
-    
-    -> then show this list (path: users.userId.myReservedBooks) in Reserved Page; this way we don't need any filtering)
+- **All Books Page**
 
-- **Available Page**: this has already all info; next: add filter option  
-   
+- **Reserved Page** 
+
+- **Available Books Page**
+
+- **Saved Books Page**: not implemented yet
+
+- next: all pages need filtering by categories + by name
+
+**- BookPage:**
+
+- this has almost everything except Notifications functionality
+
           
 **- Manage Books:** 
   
   - this has only the **ADD BOOK** option
     
-  - next: 
+  - next: search books by name and implement **DELETE BOOK** functionality
+  
+  
     
-      - show all reserved books with a **RecyclerView**  ("reserved_books" in the db)
-         
-      - show all available books with another **RecyclerView** ("available_books" in the db)
-      
-      
       
 # Useful info about Firebase:
       
