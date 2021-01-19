@@ -1,7 +1,7 @@
 
 # What we have until now:
 
-**universal account type: everyone can access the Manage Books Button in HomePage
+**Universal account type**
 
   - we can change this later quickly but for now it's easier for testing
   
@@ -38,6 +38,7 @@
  - and to extract specific books we use filtering
  
  
+      
       
 # Useful info about Firebase:
       
