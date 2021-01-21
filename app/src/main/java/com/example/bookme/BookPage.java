@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,9 +43,9 @@ public class BookPage extends AppCompatActivity  {
     private DatabaseReference databaseReference, dbRef;
     public String estimatedTime = "";
     ImageView mImage;
-    private TextView mName, mAuthor, mYear, mStatus, mCategory, reservedUsername, reservedEstimated;
+    private TextView mName, mAuthor, mYear, mStatus, mCategory, reservedUsername, reservedEstimated, timePassed;
     Button  bookMeButton;
-    LinearLayout info1, info2;
+    LinearLayout info1, info2, info3;
 
     private String book_id;
 
@@ -64,10 +65,12 @@ public class BookPage extends AppCompatActivity  {
         mAuthor = (TextView) findViewById(R.id.bookPageAuthor);
         mName = (TextView) findViewById(R.id.bookPageName);
         mStatus = (TextView) findViewById(R.id.bookPageStatus);
+        timePassed = (TextView) findViewById(R.id.timePassed);
         bookMeButton = (Button) findViewById(R.id.bookButton);
         mImage = (ImageView) findViewById(R.id.bookPageImage);
         info1 = (LinearLayout) findViewById(R.id.bookInfo1);
         info2 = (LinearLayout) findViewById(R.id.bookInfo2);
+        info3 = (LinearLayout) findViewById(R.id.bookInfo3);
         reservedEstimated = (TextView) findViewById(R.id.reservedEstimated);
         reservedUsername = (TextView) findViewById(R.id.reservedUsername);
 
@@ -89,8 +92,18 @@ public class BookPage extends AppCompatActivity  {
                 if(!book.isAvailable()) {
                    info1.setVisibility(View.VISIBLE);
                    info2.setVisibility(View.VISIBLE);
-                    reservedEstimated.setText(book.getEstimatedTime());
-                    reservedUsername.setText(book.getReservedUsername());
+                   info3.setVisibility(View.VISIBLE);
+                   reservedEstimated.setText(book.getEstimatedTime());
+                   reservedUsername.setText(book.getReservedUsername());
+
+                    String reservedDate = book.getReservedDate();
+
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    Date date = new Date();
+                    String nowDate = dateFormat.format(date).toString();
+                    // Function Call
+                    String time = findDifference(reservedDate, nowDate);
+                    timePassed.setText(time);
                     bookMeButton.setText("Notify when available");
                 }
             }
@@ -212,4 +225,52 @@ public class BookPage extends AppCompatActivity  {
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();
     }
+
+
+    static String findDifference(String start_date, String end_date)  {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        try {
+            Date d1 = sdf.parse(start_date);
+            Date d2 = sdf.parse(end_date);
+
+            long difference_In_Time = d2.getTime() - d1.getTime();
+
+            long difference_In_Seconds
+                    = (difference_In_Time
+                    / 1000)
+                    % 60;
+
+            long difference_In_Minutes
+                    = (difference_In_Time
+                    / (1000 * 60))
+                    % 60;
+
+            long difference_In_Hours
+                    = (difference_In_Time
+                    / (1000 * 60 * 60))
+                    % 24;
+
+            long difference_In_Days
+                    = (difference_In_Time
+                    / (1000 * 60 * 60 * 24))
+                    % 365;
+
+            return difference_In_Days + "days, "
+                    + difference_In_Hours
+                    + " h, "
+                    + difference_In_Minutes
+                    + " m, "
+                    + difference_In_Seconds
+                    + " s";
+        }
+
+        catch (ParseException e) {
+
+            e.printStackTrace();
+            return "errorrr";
+        }
+    }
+
 }

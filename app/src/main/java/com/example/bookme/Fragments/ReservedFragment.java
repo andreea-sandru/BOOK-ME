@@ -103,6 +103,16 @@ public class ReservedFragment extends Fragment {
                                 }
                         );
 
+                        /// to do:
+
+                        // trebuie accesata cartea
+                        // book.getNotifyMeUserList();
+
+                        // list.contains(currentUserId) => trimiti o notificare
+                        //
+
+
+
                     }
                 });
             }
