@@ -11,9 +11,9 @@
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="7dp"
         app:contentPaddingLeft="2dp"
         app:cardCornerRadius="15dp">
         <ImageView
@@ -47,7 +47,7 @@
                         android:hint="Irish Cafe"
                         android:text="Harry Potter 1"
                         android:textColor="#444A60"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
                         app:fontFamily="@font/nunito" />
                     <TextView

@@ -110,7 +110,7 @@ public class AllBooksFragment extends Fragment {
             }
         });
 
-        options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(firebaseSearchQuery, BookObject.class).build();
+        options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(databaseReference, BookObject.class).build();
         adapter = new FirebaseRecyclerAdapter < BookObject, BooksViewHolder > (options) {
 
             @Override
@@ -152,7 +152,7 @@ public class AllBooksFragment extends Fragment {
         FirebaseRecyclerOptions<BookObject> options;
         Query searchQuery = databaseReference.orderByChild("bookCategory").equalTo(filterCategory);
         if(filterCategory == "") {
-            searchQuery = databaseReference.orderByChild("bookCategory").startAt(filterCategory);
+            searchQuery = databaseReference;
         }
 
         options = new FirebaseRecyclerOptions.Builder <BookObject> ().setQuery(searchQuery, BookObject.class).build();
