@@ -16,7 +16,9 @@
 
 - **Saved Books Page**: not implemented yet
 
-- next: all pages need filtering by categories + by name
+- i added filtering by categories
+
+- next: filtering by name (especially in book management page)
 
 
 **BookPage:**
@@ -38,7 +40,18 @@
  - and to extract specific books we use filtering
  
  
-      
+ **So we still need:**
+ 
+ - notifications
+ 
+ - book management: search books by name + delete books
+ 
+ - separate account types
+ 
+ - favourites page (optional)
+ 
+ - better documentation
+ 
       
 # Useful info about Firebase:
       
