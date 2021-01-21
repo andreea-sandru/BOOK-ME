@@ -1,8 +1,9 @@
 package com.example.bookme.ObjectModels;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.HashMap;
 
-public class BookObject {
+public class BookObject implements Serializable {
 
     private String userId; // id-ul userului care a rezervat cartea
     private String bookId; // id-ul cartii din Firebase Database
@@ -15,7 +16,9 @@ public class BookObject {
     private String reservedDate;
     private String estimatedTime;
     private String reservedUsername;
-    private ArrayList notifyUserIds; //id-urile userilor de notificat cand cartea e din nou available
+
+    public HashMap<String, String> notifyUserIds = new HashMap<String, String>();
+    // merge pus la cheie id-ul userului de notificat si la valoare orice
 
     // cand modificam starea "available", trebuie sa modificam si reservedUserId
     private String reservedUserId; //id-ul userului care rezerva cartea
@@ -37,7 +40,6 @@ public class BookObject {
         this.reservedDate = "";
         this.estimatedTime = "";
         this.reservedUsername = "";
-        this.notifyUserIds = new ArrayList();
     }
 
     public String getStatus() {
@@ -143,11 +145,12 @@ public class BookObject {
         this.reservedUsername = reservedUsername;
     }
 
-    public ArrayList getNotifyUserIds() {
+    public HashMap<String, String> getNotifyUserIds() {
         return notifyUserIds;
     }
 
-    public void setNotifyUserIds(ArrayList notifyUserIds) {
+    public void setNotifyUserIds(HashMap<String, String> notifyUserIds) {
         this.notifyUserIds = notifyUserIds;
     }
+
 }

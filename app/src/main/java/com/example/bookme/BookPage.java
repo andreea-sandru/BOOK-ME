@@ -125,6 +125,41 @@ public class BookPage extends AppCompatActivity  {
                         if(book.isAvailable()) {
                             raisePopUp();
                         }
+                        else {
+                            // extragere id user curent
+                            final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                            DatabaseReference ref2  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
+                            ref2.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    // citire info carte din baza de date
+                                    BookObject book = dataSnapshot.getValue(BookObject.class);
+                                    HashMap usersList = book.getNotifyUserIds();
+                                    usersList.put(userId, userId);
+                                    // actualizare book
+                                    book.setNotifyUserIds(usersList);
+
+                                    // facem iar o referinta catre carte
+                                    DatabaseReference ref3  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
+                                    // update carte in baza de date
+                                    ref3.child("notifyUserIds").setValue(usersList).addOnCompleteListener(
+                                            new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        // afisam mesaj de succes
+                                                        Toast.makeText(getApplicationContext(), "Book Updated Successfully ", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            }
+                                    );
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                            });
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -207,12 +242,7 @@ public class BookPage extends AppCompatActivity  {
                         }
                         else {
                             dialogBuilder.dismiss();
-                            // TODO: de implementat partea de notificari
-                            // trebuie salvati userii care dau book pe o carte in arraylist-ul din BookObject
-                            // si apoi cand se elibereaza in pagina de Reserved Books (la click pe return Book)
-                            // sa primeasca toti userii din lista acelei carti notificare
                         }
-
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
