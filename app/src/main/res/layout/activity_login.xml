@@ -22,7 +22,7 @@
             android:fontFamily="@font/nunito_extrabold"
             android:text="Log in"
             android:textColor="#F8F8F8"
-            android:textSize="32dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
         <EditText
             android:id="@+id/editEmail"
@@ -62,7 +62,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Log in"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textColor="#444A60"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"

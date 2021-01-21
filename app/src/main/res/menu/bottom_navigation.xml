@@ -9,10 +9,6 @@
         android:id="@+id/availableBooks"
         android:icon="@drawable/ic_check_mark"
         android:title="Available" />
-    <item
-        android:id="@+id/savedBooks"
-        android:icon="@drawable/ic_save"
-        android:title="Saved" />
 
     <item
         android:id="@+id/reservedBooks"

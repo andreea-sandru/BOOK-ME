@@ -10,12 +10,12 @@
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         app:contentPaddingLeft="2dp"
         app:cardCornerRadius="15dp">
         <ImageView
             android:id="@+id/bookImg"
-            android:layout_width="160dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:alpha="0.90"
             android:layout_gravity="bottom|right"
@@ -32,19 +32,18 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="15dp"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/bookName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/nunito"
                         android:hint="Irish Cafe"
                         android:text="Harry Potter 1"
                         android:textColor="#444A60"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
                         app:fontFamily="@font/nunito" />
                     <TextView
@@ -52,7 +51,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Irish Cafe"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="5dp"
                         android:textColor="#8E95AD"
                         android:textSize="18sp"
@@ -68,7 +66,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/nunito"
                             android:textColor="#8E95AD"
@@ -98,7 +95,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="5dp"
                             android:textColor="#8E95AD"
                             android:textSize="16sp"
