@@ -126,6 +126,10 @@ public class BookPage extends AppCompatActivity  {
                             raisePopUp();
                         }
                         else {
+                            // TODO: NOTIFICARI
+                            // am adaugat in hashmap-ul cartii perechea (userId, userId)
+                            // ca nu mergea cu array list
+
                             // extragere id user curent
                             final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
