@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.example.bookme.ObjectModels.BookObject;
@@ -81,7 +83,7 @@ public class BookPage extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject book = dataSnapshot.getValue(BookObject.class);
-                Glide.with(getApplicationContext()).load(book.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mImage);
+                Glide.with(getApplicationContext()).load(book.getImageUri()).override(300, 300).into(mImage);
                 mName.setText(book.getBookName());
                 mYear.setText(book.getBookYear());
                 mAuthor.setText(book.getBookAuthor());
@@ -124,6 +126,45 @@ public class BookPage extends AppCompatActivity  {
                         BookObject book = dataSnapshot.getValue(BookObject.class);
                         if(book.isAvailable()) {
                             raisePopUp();
+                        }
+                        else {
+                            // TODO: NOTIFICARI
+                            // am adaugat in hashmap-ul cartii perechea (userId, userId)
+                            // ca nu mergea cu array list
+
+                            // extragere id user curent
+                            final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            
+                            DatabaseReference ref2  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
+                            ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    // citire info carte din baza de date
+                                    BookObject book = dataSnapshot.getValue(BookObject.class);
+                                    HashMap usersList = book.getNotifyUserIds();
+                                    usersList.put(userId, userId);
+                                    // actualizare book
+                                    book.setNotifyUserIds(usersList);
+
+                                    // facem iar o referinta catre carte
+                                    DatabaseReference ref3  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
+                                    // update carte in baza de date
+                                    ref3.child("notifyUserIds").setValue(usersList).addOnCompleteListener(
+                                            new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        // afisam mesaj de succes
+                                                        Toast.makeText(getApplicationContext(), "Book Updated Successfully ", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            }
+                                    );
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                            });
                         }
                     }
                     @Override
@@ -169,6 +210,7 @@ public class BookPage extends AppCompatActivity  {
                             updated_book.setEstimatedTime(estimatedTime);
                             updated_book.setAvailable(false);
                             updated_book.setReservedUserId(userId);
+                            updated_book.setBookCategoryAndStatus(updated_book.getBookCategory() + " false");
                             // extragere nume user curent:
                             DatabaseReference ref_new  = FirebaseDatabase.getInstance().getReference("users").child(userId);
                             ref_new.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -207,12 +249,7 @@ public class BookPage extends AppCompatActivity  {
                         }
                         else {
                             dialogBuilder.dismiss();
-                            // TODO: de implementat partea de notificari
-                            // trebuie salvati userii care dau book pe o carte in arraylist-ul din BookObject
-                            // si apoi cand se elibereaza in pagina de Reserved Books (la click pe return Book)
-                            // sa primeasca toti userii din lista acelei carti notificare
                         }
-
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {

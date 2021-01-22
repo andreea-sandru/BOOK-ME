@@ -207,7 +207,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:gravity="left|center"
-                                android:text="Estimated return date"
+                                android:text="Estimated return"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="15sp"
                                 android:textStyle="bold"

@@ -63,7 +63,7 @@ public class ReservedFragment extends Fragment {
             @Override
             protected void onBindViewHolder(ReservedBookViewHolder holder, final int position, @NonNull BookObject model) {
                 final BookObject book = model;
-                Glide.with(view.getContext()).load(model.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.imageViewBook);
+                Glide.with(view.getContext()).load(model.getImageUri()).override(200, 200).into(holder.imageViewBook);
                 holder.textViewCategory.setText(book.getBookCategory());
                 holder.textViewAuthor.setText(book.getBookAuthor());
                 holder.textViewYear.setText(book.getBookYear());
@@ -90,6 +90,7 @@ public class ReservedFragment extends Fragment {
                         BookObject updated_book = book;
                         updated_book.setAvailable(true);
                         updated_book.setReservedUserId("");
+                        updated_book.setBookCategoryAndStatus(updated_book.getBookCategory() + " true");
                         DatabaseReference ref_new = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
                         ref_new.setValue(updated_book).addOnCompleteListener(
                                 new OnCompleteListener<Void>() {
