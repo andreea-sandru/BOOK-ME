@@ -63,7 +63,7 @@ public class ReservedFragment extends Fragment {
             @Override
             protected void onBindViewHolder(ReservedBookViewHolder holder, final int position, @NonNull BookObject model) {
                 final BookObject book = model;
-                Glide.with(view.getContext()).load(model.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.imageViewBook);
+                Glide.with(view.getContext()).load(model.getImageUri()).override(200, 200).into(holder.imageViewBook);
                 holder.textViewCategory.setText(book.getBookCategory());
                 holder.textViewAuthor.setText(book.getBookAuthor());
                 holder.textViewYear.setText(book.getBookYear());
