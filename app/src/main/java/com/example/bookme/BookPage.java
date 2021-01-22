@@ -83,7 +83,7 @@ public class BookPage extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject book = dataSnapshot.getValue(BookObject.class);
-                Glide.with(getApplicationContext()).load(book.getImageUri()).override(200, 200).into(mImage);
+                Glide.with(getApplicationContext()).load(book.getImageUri()).override(300, 300).into(mImage);
                 mName.setText(book.getBookName());
                 mYear.setText(book.getBookYear());
                 mAuthor.setText(book.getBookAuthor());
@@ -210,6 +210,7 @@ public class BookPage extends AppCompatActivity  {
                             updated_book.setEstimatedTime(estimatedTime);
                             updated_book.setAvailable(false);
                             updated_book.setReservedUserId(userId);
+                            updated_book.setBookCategoryAndStatus(updated_book.getBookCategory() + " false");
                             // extragere nume user curent:
                             DatabaseReference ref_new  = FirebaseDatabase.getInstance().getReference("users").child(userId);
                             ref_new.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -90,6 +90,7 @@ public class ReservedFragment extends Fragment {
                         BookObject updated_book = book;
                         updated_book.setAvailable(true);
                         updated_book.setReservedUserId("");
+                        updated_book.setBookCategoryAndStatus(updated_book.getBookCategory() + " true");
                         DatabaseReference ref_new = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
                         ref_new.setValue(updated_book).addOnCompleteListener(
                                 new OnCompleteListener<Void>() {
