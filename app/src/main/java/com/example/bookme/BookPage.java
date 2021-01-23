@@ -81,7 +81,10 @@ public class BookPage extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject book = dataSnapshot.getValue(BookObject.class);
-                Glide.with(getApplicationContext()).load(book.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mImage);
+                if (book == null) {
+                    return;
+                }
+                    Glide.with(getApplicationContext()).load(book.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mImage);
                 mName.setText(book.getBookName());
                 mYear.setText(book.getBookYear());
                 mAuthor.setText(book.getBookAuthor());
@@ -215,7 +218,6 @@ public class BookPage extends AppCompatActivity  {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     UserObject user = snapshot.getValue(UserObject.class);
                                     updated_book.setReservedUsername(user.getUserFullName());
-
                                     // salvare data rezervare carte ca string
                                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                                     Date date = new Date();

@@ -19,10 +19,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </TextView>
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        android:background="#444A60"
+        android:queryHint="Search" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/allBooksRecyclerview"
-        android:layout_below="@+id/title"
-        android:layout_marginTop="60dp"
+        android:id="@+id/manageBooksRecyclerview"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop = "100dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
@@ -38,5 +46,7 @@
             android:src="@drawable/ic_plus"
             android:contentDescription="Add book">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
