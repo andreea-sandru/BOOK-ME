@@ -16,6 +16,7 @@ public class BookObject implements Serializable {
     private String reservedDate;
     private String estimatedTime;
     private String reservedUsername;
+    private String bookCategoryAndStatus; // I need this for filtering
 
     public HashMap<String, String> notifyUserIds = new HashMap<String, String>();
     // merge pus la cheie id-ul userului de notificat si la valoare orice
@@ -40,6 +41,7 @@ public class BookObject implements Serializable {
         this.reservedDate = "";
         this.estimatedTime = "";
         this.reservedUsername = "";
+        this.bookCategoryAndStatus = this.bookCategory + " true";
     }
 
     public String getStatus() {
@@ -152,5 +154,14 @@ public class BookObject implements Serializable {
     public void setNotifyUserIds(HashMap<String, String> notifyUserIds) {
         this.notifyUserIds = notifyUserIds;
     }
+
+    public String getBookCategoryAndStatus() {
+        return bookCategoryAndStatus;
+    }
+
+    public void setBookCategoryAndStatus(String bookCategoryAndStatus) {
+        this.bookCategoryAndStatus = bookCategoryAndStatus;
+    }
+
 
 }

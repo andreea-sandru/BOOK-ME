@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.example.bookme.ObjectModels.BookObject;
@@ -137,7 +139,7 @@ public class BookPage extends AppCompatActivity  {
                             final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                             DatabaseReference ref2  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
-                            ref2.addValueEventListener(new ValueEventListener() {
+                            ref2.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     // citire info carte din baza de date
@@ -211,6 +213,7 @@ public class BookPage extends AppCompatActivity  {
                             updated_book.setEstimatedTime(estimatedTime);
                             updated_book.setAvailable(false);
                             updated_book.setReservedUserId(userId);
+                            updated_book.setBookCategoryAndStatus(updated_book.getBookCategory() + " false");
                             // extragere nume user curent:
                             DatabaseReference ref_new  = FirebaseDatabase.getInstance().getReference("users").child(userId);
                             ref_new.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -218,6 +221,7 @@ public class BookPage extends AppCompatActivity  {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     UserObject user = snapshot.getValue(UserObject.class);
                                     updated_book.setReservedUsername(user.getUserFullName());
+
                                     // salvare data rezervare carte ca string
                                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                                     Date date = new Date();

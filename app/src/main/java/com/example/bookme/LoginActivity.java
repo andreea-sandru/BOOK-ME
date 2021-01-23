@@ -29,8 +29,21 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseDatabase mFirebaseDatabase;
+    FirebaseUser firebaseUser;
     FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //check if user is null
+        if (firebaseUser != null){
+            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseApp.initializeApp(this.getApplicationContext());
