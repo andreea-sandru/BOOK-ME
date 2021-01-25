@@ -23,8 +23,6 @@
  
 ## Chosen theme: **Book Rent App**
 
- **Chosen theme:** **Books**
-
 
  **Basic Functionalities**:
  
@@ -48,21 +46,52 @@
     
     - This book will appear in page Reserved Books, and will disappear from page Available Books.
     
-    - When you want to return a book, you'll open the book and press on "make available again". And this book will reappear in page Available Books.
+    - When you want to return a book, you'll press the "Return book" button on Reserved books page.
+
+    - The book will reappear in page Available Books and dissapear from Reserved Books.
+    
+    - You can also subscribe to receive notifications when a specific book is returned.
+    
+    - Pressing the notification will redirect you to the subscribed book page.
     
 - Admin:
    
    - There is **a single admin account**
    
-   - To enter the app as admin, the user has to enter admin credentials and click the 'Login as Admin' button
+   - To enter the app as admin, the user has to enter admin credentials and click the 'Login as Admin' button.
    
-   - By doing so, he will have admin rights to all existing books
+   - By doing so, he will have admin rights to all existing books.
    
-   - Compared to client users, he will have a "Manage all books option"
+   - Compared to client users, he will have a "Manage all books option".
     
 - Manage All Books option:
  
     - ADD BOOK: book image, name, author, year, category
+    
+    - SEARCH BOOK by name
 
     - DELETE  BOOK
+   
+   
+**Main pages:**
+
+
+- Login, Register and All Books Pages:
+
+
+<p float="left">
+  <img src="images/loginPage.png" title = "Login" width="110" height = "200" hspace="20"/>
+  <img src="images/registerPage.png" title = "Register" width="110" height = "200" hspace="20"/> 
+  <img src="images/allBooksPage.png" title = "All Books" width="110" height = "200" hspace="20"/>
+</p>
+
+
+- Book, Manage Books and Add Book Pages:
+
+
+<p float="left">
+  <img src="images/bookPage.png" title = "Book Page" width="110" height = "200" hspace="20"/>
+  <img src="images/manageBooks.png" title = "Manage Books Page" width="110" height = "200" hspace="20"/>
+  <img src="images/addBook.png" title = "Add Book Page" width="110" height = "200" hspace="20"/>
+</p>
   
