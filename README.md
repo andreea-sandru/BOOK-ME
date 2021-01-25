@@ -6,9 +6,9 @@
 
 - **Developer**: Nicoleta-Manuela Paraschiv
 
-- **Tester**: Bianca-Andreea Gheldiu
+- **Tester + Dev**: Bianca-Andreea Gheldiu
 
-- **Project Manager**: Andreea-Daniela Sandru
+- **Project Manager + Dev**: Andreea-Daniela Sandru
 
 ## Technologies used:
 
@@ -50,7 +50,7 @@
     
     - When you want to return a book, you'll open the book and press on "make available again". And this book will reappear in page Available Books.
     
-   - Admin:
+- Admin:
    
    - There is **a single admin account**
    
@@ -60,7 +60,7 @@
    
    - Compared to client users, he will have a "Manage all books option"
     
- - Manage All Books option:
+- Manage All Books option:
  
     - ADD BOOK: book image, name, author, year, category
 
