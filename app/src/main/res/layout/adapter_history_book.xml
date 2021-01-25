@@ -1,0 +1,121 @@
+<RelativeLayout
+    android:id="@+id/idd"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idCardViewBook"
+        android:elevation="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="1dp"
+        app:contentPaddingLeft="2dp"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/nunito_extrabold"
+                            android:text="Booked by ">
+                        </TextView>
+                        <TextView
+                            android:id="@+id/userReservedName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="1dp"
+                            android:text="Macy Kate"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/nunito_extrabold" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_start"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="1dp"
+                            android:text="From:"
+                            tools:ignore="VectorDrawableCompat" />
+                        <TextView
+                            android:id="@+id/startHistory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="1dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito_extrabold"
+                            android:text="18/08/2012 15:04:08"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="15dp">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginTop="1dp"
+                            android:textColor="#8E95AD"
+                            android:src="@drawable/ic_wall_clock2"
+                            tools:ignore="VectorDrawableCompat" />
+                        <TextView
+                            android:id="@+id/endHistory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="18/08/2012 15:04:08"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="1dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito_extrabold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+

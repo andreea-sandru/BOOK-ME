@@ -22,15 +22,16 @@
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="40dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
         android:padding="10dp"
-        android:background="#444A60"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/coloured_dark_oval"
         android:queryHint="Search" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/manageBooksRecyclerview"
         android:layout_below="@+id/searchView"
-        android:layout_marginTop = "100dp"
+        android:layout_marginTop = "115dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

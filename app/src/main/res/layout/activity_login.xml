@@ -61,7 +61,21 @@
             android:id="@+id/loginButton"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="Log in"
+            android:text="Log in as Client"
+            android:textSize="16dp"
+            android:textColor="#444A60"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/coloured_button"
+            android:fontFamily="@font/nunito"
+            android:textStyle="bold"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/loginButtonAdmin"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Log in as Admin"
             android:textSize="16dp"
             android:textColor="#444A60"
             android:layout_marginTop="10dp"

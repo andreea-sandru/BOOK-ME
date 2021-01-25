@@ -258,13 +258,49 @@
                                 app:fontFamily="@font/nunito_extrabold" />
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:visibility="visible">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:fontFamily="@font/nunito_extrabold"
+                                android:text="Book History">
+                            </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginTop="5dp"
+                                android:elevation="2dp"
+                                android:textColor="@color/colorAccent"
+                                android:fontFamily="@font/nunito"
+                                android:text="This item has no book history yet.">
+                            </TextView>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_marginTop="-25dp"
+                                android:elevation="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="20dp"
+                                android:id="@+id/historyRecyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            </androidx.recyclerview.widget.RecyclerView>
+                        </LinearLayout>
 
                         <Button
                             android:id="@+id/bookButton"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_marginLeft="40dp"
-                            android:layout_marginTop="50dp"
+                            android:layout_marginTop="20dp"
                             android:layout_marginRight="40dp"
                             android:layout_marginBottom="15dp"
                             android:background="@drawable/coloured_button"

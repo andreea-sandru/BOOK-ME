@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,11 +20,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
+import com.example.bookme.Adapters.HistoryViewHolder;
+import com.example.bookme.Adapters.ReservedBookViewHolder;
 import com.example.bookme.ObjectModels.BookObject;
+import com.example.bookme.ObjectModels.HistoryObject;
 import com.example.bookme.ObjectModels.UserObject;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +39,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
@@ -42,7 +51,7 @@ import java.util.HashMap;
 public class BookPage extends AppCompatActivity  {
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference databaseReference, dbRef;
+    private DatabaseReference databaseReference, dbRef, historyRef;
     public String estimatedTime = "";
     ImageView mImage;
     private TextView mName, mAuthor, mYear, mStatus, mCategory, reservedUsername, reservedEstimated, timePassed;
@@ -50,6 +59,16 @@ public class BookPage extends AppCompatActivity  {
     LinearLayout info1, info2, info3;
 
     private String book_id;
+
+    private RecyclerView recyclerView;
+    private FirebaseRecyclerOptions<HistoryObject> options;
+    private FirebaseRecyclerAdapter<HistoryObject, HistoryViewHolder> adapter;
+
+    @Override
+    public void onBackPressed() {
+        Intent backIntent = new Intent(getApplicationContext(), HomePage.class);
+        startActivity(backIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +105,8 @@ public class BookPage extends AppCompatActivity  {
                 if (book == null) {
                     return;
                 }
-                    Glide.with(getApplicationContext()).load(book.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mImage);
+
+                Glide.with(getApplicationContext()).load(book.getImageUri()).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mImage);
                 mName.setText(book.getBookName());
                 mYear.setText(book.getBookYear());
                 mAuthor.setText(book.getBookAuthor());
@@ -143,22 +163,19 @@ public class BookPage extends AppCompatActivity  {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     // citire info carte din baza de date
-                                    BookObject book = dataSnapshot.getValue(BookObject.class);
+                                    final BookObject book = dataSnapshot.getValue(BookObject.class);
                                     HashMap usersList = book.getNotifyUserIds();
                                     usersList.put(userId, userId);
                                     // actualizare book
                                     book.setNotifyUserIds(usersList);
-
-                                    // facem iar o referinta catre carte
                                     DatabaseReference ref3  = FirebaseDatabase.getInstance().getReference("all_books").child(book_id);
                                     // update carte in baza de date
                                     ref3.child("notifyUserIds").setValue(usersList).addOnCompleteListener(
                                             new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()){
-                                                        // afisam mesaj de succes
-                                                        Toast.makeText(getApplicationContext(), "Book Updated Successfully ", Toast.LENGTH_LONG).show();
+                                                    if(task.isSuccessful()) {
+                                                        Toast.makeText(getApplicationContext(), "You will be notified!", Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             }
@@ -177,6 +194,34 @@ public class BookPage extends AppCompatActivity  {
                 });
             }
         });
+
+        // handle book history recyclerView
+        recyclerView = (RecyclerView) findViewById(R.id.historyRecyclerView);
+        historyRef = FirebaseDatabase.getInstance().getReference().child("history").child(book_id);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        Query firebaseSearchQuery = historyRef.limitToFirst(3);
+
+        options = new FirebaseRecyclerOptions.Builder <HistoryObject> ().setQuery(firebaseSearchQuery, HistoryObject.class).build();
+        adapter = new FirebaseRecyclerAdapter < HistoryObject, HistoryViewHolder> (options) {
+
+            @Override
+            protected void onBindViewHolder(HistoryViewHolder holder, final int position, @NonNull HistoryObject model) {
+                holder.reservedUserName.setText(model.getUserFullName());
+                holder.startDate.setText(model.getStartDate());
+                holder.endDate.setText(model.getEndDate());
+            }
+            @NonNull
+            @Override
+            public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_history_book, parent, false);
+                return new HistoryViewHolder(view);
+            }
+        };
+
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
     }
 
     public void raisePopUp() {
@@ -225,7 +270,7 @@ public class BookPage extends AppCompatActivity  {
                                     // salvare data rezervare carte ca string
                                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                                     Date date = new Date();
-                                    String dateString = dateFormat.format(date).toString();
+                                    String dateString = dateFormat.format(date);
                                     updated_book.setReservedDate(dateString);
 
                                     // updatare info carte in baza de date

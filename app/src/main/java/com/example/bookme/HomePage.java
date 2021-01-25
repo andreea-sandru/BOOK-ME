@@ -2,21 +2,28 @@ package com.example.bookme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.app.Notification;
+import android.app.NotificationManager;
+
+
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import android.content.Context;
+import android.content.Intent;
+import android.app.NotificationManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.example.bookme.Fragments.AllBooksFragment;
 import com.example.bookme.Fragments.AvailableFragment;
 import com.example.bookme.Fragments.ReservedFragment;
@@ -24,33 +31,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 
 public class HomePage extends AppCompatActivity {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 2;
+    private static final String adminId = "2QR6MZbRWgdZGiwC5QWyHZDRvMe2";
 
     FloatingActionButton addButton;
+    FirebaseAuth mFirebaseAuth;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.change_pass);
-        //getActionBar().setOverflowIcon(drawable);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
-        addButton = findViewById(R.id.addButton);
-
-        // click addbuton button
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomePage.this, ManageBooks.class));
-            }
-        });
+        final String userId = mFirebaseAuth.getCurrentUser().getUid(); //id-ul userului curent
+        if(userId.equals(adminId)) {
+            addButton = findViewById(R.id.addButton);
+            addButton.setVisibility(View.VISIBLE);
+            // click addbuton button
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(HomePage.this, ManageBooks.class));
+                }
+            });
+        }
 
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F5F5F5")));
