@@ -19,6 +19,8 @@
   - NoSQL Database: Firebase Realtime Database
 
 **2. Android Studio**
+
+**3. Java**
  
  
 ## Chosen theme: **Book Rent App**
